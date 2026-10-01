@@ -1,0 +1,2 @@
+# NVIDIA GPU: install PyTorch with CUDA first (https://pytorch.org/get-started/locally/), then:
+-r requirements.txt

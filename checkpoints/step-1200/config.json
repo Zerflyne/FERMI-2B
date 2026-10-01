@@ -1,0 +1,67 @@
+{
+ "base_model": "openbmb/MiniCPM5-2B",
+ "lora_rank": 32,
+ "lora_alpha": 64,
+ "lora_targets": [
+  "down_proj",
+  "gate_proj",
+  "k_proj",
+  "o_proj",
+  "q_proj",
+  "up_proj",
+  "v_proj"
+ ],
+ "head_dim": 512,
+ "max_len": 2048,
+ "prompt_version": 1,
+ "training_step": 1200,
+ "training": {
+  "epochs": 1.0,
+  "lr": 0.0002,
+  "lr_head": 0.001,
+  "tokens_per_micro_batch": 8192,
+  "accumulation": 8
+ },
+ "prompt_format": [
+  "<s><|im_start|>system\nRead the state, then answer the question about it. Judge only from what the state shows.<|im_end|>\n<|im_start|>user\nState:\n",
+  "<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
+ ],
+ "pad_id": 1,
+ "evaluation": {
+  "n": 2538,
+  "tutte": {
+   "n": 2538,
+   "ce": 0.5739,
+   "kl": 0.1359,
+   "accordo_qwen": 0.853,
+   "tv": 0.1504
+  },
+  "noul": {
+   "n": 1083,
+   "ce": 0.3415,
+   "kl": 0.0748,
+   "accordo_qwen": 0.903,
+   "tv": 0.0985
+  },
+  "choice": {
+   "n": 761,
+   "ce": 0.6461,
+   "kl": 0.1825,
+   "accordo_qwen": 0.8371,
+   "tv": 0.1775
+  },
+  "score": {
+   "n": 694,
+   "ce": 0.8573,
+   "kl": 0.1803,
+   "accordo_qwen": 0.7925,
+   "tv": 0.2017
+  },
+  "ece": 0.0952,
+  "jev": {
+   "n": 200,
+   "accordo": 0.8,
+   "ce": 0.6099
+  }
+ }
+}
